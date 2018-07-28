@@ -9,12 +9,16 @@ import { RouterModule, Routes} from '@angular/router';
 import { MatToolbarModule} from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { IssueService } from './service/issue.service';
+
+import { HttpClientModule } from '@angular/common/http';
+
 const routes: Routes = [
   { path: 'create', component: CreateComponent},
   { path: 'edit/:id', component: EditComponent},
   { path: 'list', component: ListComponent},
   { path: '', redirectTo: 'list', pathMatch: 'full'}
-]
+];
 
 @NgModule({
   declarations: [
@@ -27,9 +31,10 @@ const routes: Routes = [
     BrowserModule,
     RouterModule.forRoot(routes),
     MatToolbarModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [IssueService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
