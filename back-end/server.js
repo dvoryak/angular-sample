@@ -51,7 +51,7 @@ app.post('/issues', (req, resp) => {
     })
 });
 
-app.put('/issues/update/:id', (req, resp) => {
+app.put('/issues/:id', (req, resp) => {
   Issue.findById(req.params.id, (err, issue) => {
     if (!issue) {
       return next(new Error('Could not retrieve issue'))

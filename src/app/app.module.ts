@@ -11,9 +11,8 @@ import {
   MatCardModule, MatTableModule, MatSnackBarModule, MatDividerModule, MatButtonModule, MatSelectModule
 } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { IssueService } from './service/issue.service';
-
+import { ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
@@ -45,7 +44,8 @@ const routes: Routes = [
     MatSnackBarModule,
     MatDividerModule,
     MatButtonModule,
-    MatSelectModule
+    MatSelectModule,
+    ReactiveFormsModule
   ],
   providers: [IssueService],
   bootstrap: [AppComponent]
