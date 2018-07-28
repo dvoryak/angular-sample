@@ -1,5 +1,8 @@
-export class Issue {
+export interface Issue {
   id: number;
   status: string;
-  constructor(title: string, responsible: string, description: string, severity: string) {}
+  title: string;
+  responsible: string;
+  description: string;
+  severity: string;
 }

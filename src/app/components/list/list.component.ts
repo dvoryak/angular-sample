@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {IssueService} from '../../service/issue.service';
+import {Router} from '@angular/router';
+import {MatTableDataSource} from '@angular/material';
+
+import {Issue} from '../../model/issue';
 
 @Component({
   selector: 'app-list',
@@ -8,10 +12,20 @@ import {IssueService} from '../../service/issue.service';
 })
 export class ListComponent implements OnInit {
 
-  constructor(private issueService: IssueService) { }
+  issues: Issue[];
+  displayedColumns = ['title', 'responsible', 'severity', 'status', 'actions'];
+  constructor(private issueService: IssueService, private router: Router) { }
 
   ngOnInit() {
-    console.log(this.issueService.getIssues());
+    this.fetchIssues();
   }
+  fetchIssues() {
+    console.log(this.issueService.getIssues())
+    this.issues = this.issueService.getIssues();
+  }
+  editIssue(id) {
+    this.router.navigate(['/edit' + id]);
+  }
+  deleteIssue(id) {}
 
 }

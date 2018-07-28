@@ -6,7 +6,10 @@ import { ListComponent } from './components/list/list.component';
 import { EditComponent } from './components/edit/edit.component';
 import { CreateComponent } from './components/create/create.component';
 import { RouterModule, Routes} from '@angular/router';
-import { MatToolbarModule} from '@angular/material';
+import {
+  MatToolbarModule, MatFormFieldModule, MatInputModule, MatOptionModule, MatIconModule,
+  MatCardModule, MatTableModule, MatSnackBarModule, MatDividerModule, MatButtonModule, MatSelectModule
+} from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { IssueService } from './service/issue.service';
@@ -30,9 +33,19 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
-    MatToolbarModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatToolbarModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatOptionModule,
+    MatIconModule,
+    MatCardModule,
+    MatTableModule,
+    MatSnackBarModule,
+    MatDividerModule,
+    MatButtonModule,
+    MatSelectModule
   ],
   providers: [IssueService],
   bootstrap: [AppComponent]
