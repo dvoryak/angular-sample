@@ -4,6 +4,8 @@ import {Router} from '@angular/router';
 import {MatTableDataSource} from '@angular/material';
 
 import {Issue} from '../../model/issue';
+import {logger} from 'codelyzer/util/logger';
+import {log} from 'util';
 
 @Component({
   selector: 'app-list',
@@ -20,12 +22,19 @@ export class ListComponent implements OnInit {
     this.fetchIssues();
   }
   fetchIssues() {
-    console.log(this.issueService.getIssues())
-    this.issues = this.issueService.getIssues();
+    this.issueService.getIssues().subscribe((data: Issue[]) => {
+      this.issues = data;
+      log('Data requested');
+      log(this.issues);
+    });
   }
   editIssue(id) {
     this.router.navigate(['/edit' + id]);
   }
-  deleteIssue(id) {}
+  deleteIssue(id) {
+    this.issueService.deleteIssue(id).subscribe(() => {
+      this.fetchIssues();
+    });
+  }
 
 }
