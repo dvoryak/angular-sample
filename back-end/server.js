@@ -29,7 +29,7 @@ app.get('/issues',(req, resp) => {
   })
 });
 
-app.get('/issue/:id', (req, resp) => {
+app.get('/issues/:id', (req, resp) => {
   Issue.findById(req.params.id, (err, issue) => {
     console.log('Getting by id:', req.params.id);
     if(err) {
@@ -40,7 +40,7 @@ app.get('/issue/:id', (req, resp) => {
   });
 });
 
-app.post('/issue', (req, resp) => {
+app.post('/issues', (req, resp) => {
   let issue = new Issue(req.body);
   issue.save()
     .then(issue => {
@@ -51,7 +51,7 @@ app.post('/issue', (req, resp) => {
     })
 });
 
-app.put('/issue/update/:id', (req, resp) => {
+app.put('/issues/update/:id', (req, resp) => {
   Issue.findById(req.params.id, (err, issue) => {
     if (!issue) {
       return next(new Error('Could not retrieve issue'))
@@ -72,6 +72,16 @@ app.put('/issue/update/:id', (req, resp) => {
   });
 });
 
+app.delete('/issues/:id', (req, resp) => {
+  Issue.findByIdAndDelete(req.params.id, (err, data) => {
+    console.log(data);
+    if (data) {
+      resp.json("Deleted successfully");
+    } else {
+      resp.json("Error while deleting");
+    }
+  })
+});
 //router.route('api/issue/:id').delete()
 
 
